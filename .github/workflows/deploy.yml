@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write    # This grants permission to push code changes
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
