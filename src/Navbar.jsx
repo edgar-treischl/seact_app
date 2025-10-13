@@ -1,32 +1,67 @@
 // src/Navbar.jsx
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  Stack,
+} from '@mui/material';
 
-const styles = {
-  navbar: {
-    backgroundColor: '#282c34',
-    padding: '1rem 2rem',
-    color: 'white',
-    height: '64px',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '1rem',
-  },
-  link: {
-    color: 'white',
-    textDecoration: 'none',
-    fontSize: '1rem',
-  },
-};
+import HomeIcon from '@mui/icons-material/Home';
+import PieChartIcon from '@mui/icons-material/PieChart';
+import InputIcon from '@mui/icons-material/Input';
+import OutputIcon from '@mui/icons-material/Outbox';
 
 export default function Navbar() {
   return (
-    <nav style={styles.navbar}>
-      <h1 style={{ margin: '0 1rem 0 0' }}>Reapp</h1>
-      <Link to="/" style={styles.link}>Home</Link>
-      <Link to="/Titanic" style={styles.link}>Titanic</Link>
-      <Link to="/inputs" style={styles.link}>Inputs</Link>
-      <Link to="/outputs" style={styles.link}>Outputs</Link>
-    </nav>
+    <AppBar position="static" color="primary">
+      <Toolbar>
+        {/* Logo / Title */}
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          Reapp
+        </Typography>
+
+        {/* Nav Links */}
+        <Stack direction="row" spacing={1}>
+          <Button
+            color="inherit"
+            component={RouterLink}
+            to="/"
+            startIcon={<HomeIcon />}
+          >
+            Home
+          </Button>
+
+          <Button
+            color="inherit"
+            component={RouterLink}
+            to="/Titanic"
+            startIcon={<PieChartIcon />}
+          >
+            Titanic
+          </Button>
+
+          <Button
+            color="inherit"
+            component={RouterLink}
+            to="/inputs"
+            startIcon={<InputIcon />}
+          >
+            Inputs
+          </Button>
+
+          <Button
+            color="inherit"
+            component={RouterLink}
+            to="/outputs"
+            startIcon={<OutputIcon />}
+          >
+            Outputs
+          </Button>
+        </Stack>
+      </Toolbar>
+    </AppBar>
   );
 }

@@ -1,36 +1,41 @@
 // src/pages/Inputs.jsx
 import React from 'react';
-import Card from '../Card';
+import { Container, Grid, TextField, MenuItem } from '@mui/material';
+import MyCard from '../components/MyCard';
 
 export default function Inputs() {
   return (
-    <div style={styles.container}>
-      <Card title="Text Input">
-        <input type="text" placeholder="Enter some text" style={styles.input} />
-      </Card>
+    <Container maxWidth="md" sx={{ mt: 4 }}>
+      <Grid container spacing={3}>
+        <Grid item xs={12} md={6}>
+          <MyCard title="Text Input">
+            <TextField
+              fullWidth
+              label="Enter some text"
+              variant="outlined"
+              size="small"
+              placeholder="Enter some text"
+            />
+          </MyCard>
+        </Grid>
 
-      <Card title="Select Option">
-        <select style={styles.input}>
-          <option value="">Choose one</option>
-          <option value="one">One</option>
-          <option value="two">Two</option>
-        </select>
-      </Card>
-    </div>
+        <Grid item xs={12} md={6}>
+          <MyCard title="Select Option">
+            <TextField
+              select
+              fullWidth
+              label="Choose one"
+              variant="outlined"
+              size="small"
+              defaultValue=""
+            >
+              <MenuItem value="">Choose one</MenuItem>
+              <MenuItem value="one">One</MenuItem>
+              <MenuItem value="two">Two</MenuItem>
+            </TextField>
+          </MyCard>
+        </Grid>
+      </Grid>
+    </Container>
   );
 }
-
-const styles = {
-  container: {
-    display: 'flex',
-    gap: '1rem',
-    flexWrap: 'wrap',
-  },
-  input: {
-    padding: '0.5rem',
-    fontSize: '1rem',
-    borderRadius: 4,
-    border: '1px solid #ccc',
-    width: '100%',
-  },
-};

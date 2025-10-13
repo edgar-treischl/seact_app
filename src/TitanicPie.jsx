@@ -154,7 +154,7 @@ export default function TitanicPie() {
   const middleRadius = 120;
 
   return (
-    <Box sx={{ width: '30%', textAlign: 'center' }}>
+    <Box sx={{ width: '90%', textAlign: 'center' }}>
       <Typography variant="h5" gutterBottom>
         Titanic
       </Typography>
