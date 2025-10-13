@@ -1,27 +1,22 @@
-// src/main.jsx
+import '@fontsource/roboto'; // ✅ loads Roboto font for MUI
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
+
 import App from './App';
-import './index.css';
 
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline'; // optional, resets default styles
+import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
 
-// You can customize the theme here later
-const theme = createTheme({
-  palette: {
-    mode: 'light', // Change to 'dark' if you want to test dark mode
-  },
-});
+const theme = createTheme(); // Customize if needed
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <HashRouter>
-      <ThemeProvider theme={theme}>
-        <CssBaseline /> {/* Normalize default styles */}
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <HashRouter>
         <App />
-      </ThemeProvider>
-    </HashRouter>
+      </HashRouter>
+    </ThemeProvider>
   </React.StrictMode>
 );
