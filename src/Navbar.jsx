@@ -24,6 +24,7 @@ export default function Navbar() {
     <nav style={styles.navbar}>
       <h1 style={{ margin: '0 1rem 0 0' }}>Reapp</h1>
       <Link to="/" style={styles.link}>Home</Link>
+      <Link to="/Titanic" style={styles.link}>Titanic</Link>
       <Link to="/inputs" style={styles.link}>Inputs</Link>
       <Link to="/outputs" style={styles.link}>Outputs</Link>
     </nav>
