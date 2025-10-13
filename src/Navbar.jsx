@@ -16,7 +16,7 @@ const navItems = [
 
 export default function Navbar() {
   return (
-    <AppBar position="static" color="primary">
+    <AppBar position="static" sx={{ backgroundColor: '#000' }}>
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           MyApp
