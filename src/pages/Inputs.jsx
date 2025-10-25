@@ -1,41 +1,63 @@
-// src/pages/Inputs.jsx
-import React from 'react';
-import { Container, Grid, TextField, MenuItem } from '@mui/material';
-import MyCard from '../components/MyCard';
+// src/components/TemperatureCard.jsx
+import React, { useState, useEffect } from "react";
+import DataStateCard from "../components/DataStateCard";
+import { Typography, List, ListItem, ListItemText } from "@mui/material";
 
-export default function Inputs() {
+export default function TemperatureCard() {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Simulate fetching or processing data
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      try {
+        // Example: Replace this with your own dataset
+        const simulatedData = [
+          { day: "Mon", temp: 21 },
+          { day: "Tue", temp: 23 },
+          { day: "Wed", temp: 19 },
+          { day: "Thu", temp: 25 },
+          { day: "Fri", temp: 22 },
+        ];
+
+        // Uncomment next line to simulate an empty state:
+        // const simulatedData = [];
+
+        // Uncomment next line to simulate an error:
+        // throw new Error("Data source not found");
+
+        setData(simulatedData);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }, 2000); // simulate network delay
+  }, []);
+
+  const isEmpty = !data || data.length === 0;
+
   return (
-    <Container maxWidth="md" sx={{ mt: 4 }}>
-      <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
-          <MyCard title="Text Input">
-            <TextField
-              fullWidth
-              label="Enter some text"
-              variant="outlined"
-              size="small"
-              placeholder="Enter some text"
+    <DataStateCard
+      title="Weekly Temperatures"
+      loading={loading}
+      error={error}
+      empty={isEmpty}
+      onRetry={() => window.location.reload()}
+      skeleton
+    >
+      <List>
+        {data.map((item) => (
+          <ListItem key={item.day} disablePadding>
+            <ListItemText
+              primary={`${item.day}`}
+              secondary={`Temperature: ${item.temp}°C`}
             />
-          </MyCard>
-        </Grid>
-
-        <Grid item xs={12} md={6}>
-          <MyCard title="Select Option">
-            <TextField
-              select
-              fullWidth
-              label="Choose one"
-              variant="outlined"
-              size="small"
-              defaultValue=""
-            >
-              <MenuItem value="">Choose one</MenuItem>
-              <MenuItem value="one">One</MenuItem>
-              <MenuItem value="two">Two</MenuItem>
-            </TextField>
-          </MyCard>
-        </Grid>
-      </Grid>
-    </Container>
+          </ListItem>
+        ))}
+      </List>
+    </DataStateCard>
   );
 }

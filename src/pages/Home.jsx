@@ -5,8 +5,8 @@ import Card from '../Card';
 export default function Home() {
   return (
     <div>
-      <h2>Welcome to Reapp</h2>
-      <p>This is the homepage of your site.</p>
+      <h2>Welcome to ...</h2>
+      <p>This is the landing page.</p>
 
       <Card title="Text Input">
         <input type="text" placeholder="Enter some text" style={styles.input} />
