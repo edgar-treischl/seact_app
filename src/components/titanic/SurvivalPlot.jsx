@@ -1,15 +1,19 @@
 // src/components/titanic/SurvivalPlot.jsx
 import React from 'react';
 import Plot from 'react-plotly.js';
-import titanicData from '../../data/titanic.json'; // We'll add this file next
+import titanicData from '../../data/titanic.json';
 
 export default function SurvivalPlot() {
-  // count survived vs not survived
-  const counts = titanicData.reduce((acc, row) => {
-    const key = row.Survived === 1 ? 'Survived' : 'Not survived';
-    acc[key] = (acc[key] || 0) + 1;
-    return acc;
-  }, {});
+  // Count survived vs not survived
+  const counts = titanicData.reduce(
+    (acc, row) => {
+      const key = row.Survived; // "Survived" or "Not survived"
+      acc[key] = (acc[key] || 0) + 1;
+      return acc;
+    },
+    { Survived: 0, 'Not survived': 0 } // ensure both keys exist
+  );
+
   const labels = Object.keys(counts);
   const values = Object.values(counts);
 

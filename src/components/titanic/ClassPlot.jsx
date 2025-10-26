@@ -4,12 +4,19 @@ import Plot from 'react-plotly.js';
 import titanicData from '../../data/titanic.json';
 
 export default function ClassPlot() {
-  // Count per class
+  // Passenger classes as strings
   const classes = ['1', '2', '3'];
-  const survivedCounts = classes.map(cls => titanicData.filter(d => d.Pclass === parseInt(cls) && d.Survived === 1).length);
-  const notSurvivedCounts = classes.map(cls => titanicData.filter(d => d.Pclass === parseInt(cls) && d.Survived === 0).length);
 
-  // Convert counts to percentages of total
+  // Count survived / not survived per class
+  const survivedCounts = classes.map(cls =>
+    titanicData.filter(d => d.Pclass === cls && d.Survived === 'Survived').length
+  );
+
+  const notSurvivedCounts = classes.map(cls =>
+    titanicData.filter(d => d.Pclass === cls && d.Survived === 'Not survived').length
+  );
+
+  // Convert counts to percentages
   const total = survivedCounts.map((_, i) => survivedCounts[i] + notSurvivedCounts[i]);
   const survivedPercent = survivedCounts.map((c, i) => (c / total[i]) * 100);
   const notSurvivedPercent = notSurvivedCounts.map((c, i) => (c / total[i]) * 100);

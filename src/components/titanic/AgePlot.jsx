@@ -4,9 +4,14 @@ import Plot from 'react-plotly.js';
 import titanicData from '../../data/titanic.json';
 
 export default function AgePlot() {
-  // Filter out missing or invalid ages
-  const survivedAges = titanicData.filter(d => d.Age !== null && d.Survived === 1).map(d => d.Age);
-  const notSurvivedAges = titanicData.filter(d => d.Age !== null && d.Survived === 0).map(d => d.Age);
+  // Filter out missing ages and separate by Survived/Not survived
+  const survivedAges = titanicData
+    .filter(d => d.Age != null && d.Survived === 'Survived')
+    .map(d => d.Age);
+
+  const notSurvivedAges = titanicData
+    .filter(d => d.Age != null && d.Survived === 'Not survived')
+    .map(d => d.Age);
 
   return (
     <Plot
@@ -27,7 +32,7 @@ export default function AgePlot() {
         },
       ]}
       layout={{
-        barmode: 'group', // overlay histograms to compare
+        barmode: 'overlay', // overlay histograms to compare
         title: 'Survival by Age',
         xaxis: { title: 'Age' },
         yaxis: { title: 'Count' },
