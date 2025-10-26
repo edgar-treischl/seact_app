@@ -155,9 +155,6 @@ export default function TitanicPie() {
 
   return (
     <Box sx={{ width: '90%', textAlign: 'center' }}>
-      <Typography variant="h5" gutterBottom>
-        Titanic
-      </Typography>
       <Box sx={{ display: 'flex', justifyContent: 'center', height: 400 }}>
         {view === 'class' ? (
           <PieChart

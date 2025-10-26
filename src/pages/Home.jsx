@@ -2,7 +2,7 @@
 import React from 'react';
 import { Box, Typography, Container, CardMedia } from '@mui/material';
 import MyCard from '../components/MyCard';
-import TitanicPie from '../TitanicPie';
+import TitanicPie from '../components/titanic/TitanicPie';
 
 export default function TitanicOld() {
   return (
@@ -19,12 +19,13 @@ export default function TitanicOld() {
         <Box sx={{ flex: 1 }}>
           <MyCard title="The Titanic">
             <Typography paragraph>
-              This app shows you some basic aspects about logistic regression. We use passenger's sex, class, and age to estimate the effect on the survival of the Titanic accident.
-
               The RMS Titanic was a British passenger liner that sank in the North Atlantic Ocean in April 1912 after striking an iceberg during its maiden voyage from Southampton to New York City.
+              
+              Over 1,500 people lost their lives in the disaster, making it one of the deadliest commercial peacetime maritime tragedies in modern history.
             </Typography>
             <Typography paragraph>
-              Over 1,500 people lost their lives in the disaster, making it one of the deadliest commercial peacetime maritime tragedies in modern history.
+              This app shows you some basic aspects about logistic regression. We use passenger's sex, class, and age to estimate the effect on the survival of the Titanic accident.
+
             </Typography>
             {/* Placeholder image */}
             <CardMedia
@@ -41,7 +42,7 @@ export default function TitanicOld() {
 
         {/* Right Panel */}
         <Box sx={{ flex: 1 }}>
-          <MyCard title="Titanic Survival Pie Chart">
+          <MyCard title="Survival">
             <TitanicPie />
           </MyCard>
         </Box>

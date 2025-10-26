@@ -1,39 +1,19 @@
-// src/pages/Titanic.jsx
+// src/pages/Stats.jsx
 import React, { useState } from 'react';
 import { Box, Container, Tabs, Tab, Typography, CardMedia } from '@mui/material';
 import MyCard from '../components/MyCard';
-import TitanicPie from '../TitanicPie';
 
-
+import SurvivalPlot from '../components/titanic/SurvivalPlot';
 import SexPlot from '../components/titanic/SexPlot';
 import ClassPlot from '../components/titanic/ClassPlot';
 import AgePlot from '../components/titanic/AgePlot';
 
 export default function Titanic() {
   const [tab, setTab] = useState(0);
+  const tabLabels = ['Survival', 'Sex', 'Class', 'Age'];
 
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
-      {/* Title */}
-      <Typography variant="h4" gutterBottom>
-        Survival by ...
-      </Typography>
-
-      {/* Tabs */}
-      <Tabs
-        value={tab}
-        onChange={(e, newValue) => setTab(newValue)}
-        sx={{ mb: 3 }}
-        variant="scrollable"
-        scrollButtons="auto"
-      >
-        <Tab label="Survival" />
-        <Tab label="Sex" />
-        <Tab label="Class" />
-        <Tab label="Age" />
-      </Tabs>
-
-      {/* Two-column responsive layout */}
       <Box
         sx={{
           display: 'flex',
@@ -41,7 +21,7 @@ export default function Titanic() {
           gap: 3,
         }}
       >
-        {/* Left panel: text and image */}
+        {/* Left panel: static text and image */}
         <Box sx={{ flex: 1 }}>
           <MyCard title="About the Titanic">
             <Typography paragraph>
@@ -62,10 +42,24 @@ export default function Titanic() {
           </MyCard>
         </Box>
 
-        {/* Right panel: plot changes by tab */}
+        {/* Right panel: tabs + plots */}
         <Box sx={{ flex: 1 }}>
-          <MyCard title={`Visualization: ${['Survival', 'Sex', 'Class', 'Age'][tab]}`}>
-            {tab === 0 && <TitanicPie />}
+          <MyCard>
+            {/* Tabs inside the card */}
+            <Tabs
+              value={tab}
+              onChange={(e, newValue) => setTab(newValue)}
+              variant="scrollable"
+              scrollButtons="auto"
+              sx={{ mb: 3 }}
+            >
+              {tabLabels.map((label, index) => (
+                <Tab key={index} label={label} />
+              ))}
+            </Tabs>
+
+            {/* Render selected plot */}
+            {tab === 0 && <SurvivalPlot />}
             {tab === 1 && <SexPlot />}
             {tab === 2 && <ClassPlot />}
             {tab === 3 && <AgePlot />}

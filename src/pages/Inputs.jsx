@@ -34,7 +34,7 @@ export default function TemperatureCard() {
       } finally {
         setLoading(false);
       }
-    }, 4000); // simulate network delay
+    }, 1000); // simulate network delay
   }, []);
 
   const isEmpty = !data || data.length === 0;

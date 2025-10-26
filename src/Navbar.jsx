@@ -9,7 +9,7 @@ import OutputIcon from '@mui/icons-material/TableChart';
 
 const navItems = [
   { label: 'Home', to: '/', icon: <HomeIcon /> },
-  { label: 'Titanic', to: '/Titanic', icon: <PieChartIcon /> },
+  { label: 'Stats', to: '/Stats', icon: <PieChartIcon /> },
   { label: 'Inputs', to: '/inputs', icon: <InputIcon /> },
   { label: 'Table', to: '/outputs', icon: <OutputIcon /> },
 ];

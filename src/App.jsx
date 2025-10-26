@@ -5,7 +5,7 @@ import Navbar from './Navbar';
 import Home from './pages/Home';
 import Inputs from './pages/Inputs';
 import Outputs from './pages/Outputs';
-import Titanic from './pages/Titanic';
+import Stats from './pages/Stats';
 
 
 export default function App() {
@@ -15,7 +15,7 @@ export default function App() {
       <main style={styles.main}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/titanic" element={<Titanic />} /> {/* ✅ Add this */}
+          <Route path="/stats" element={<Stats />} /> {/* ✅ Add this */}
           <Route path="/inputs" element={<Inputs />} />
           <Route path="/outputs" element={<Outputs />} />
         </Routes>
