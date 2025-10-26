@@ -1,0 +1,6 @@
+[
+  { "Survived": 0, "Pclass": 3, "Sex": "male", "Age": 22, "Fare": 7.25 },
+  { "Survived": 1, "Pclass": 1, "Sex": "female", "Age": 38, "Fare": 71.2833 },
+  { "Survived": 1, "Pclass": 3, "Sex": "female", "Age": 26, "Fare": 7.925 },
+  { "Survived": 1, "Pclass": 1, "Sex": "female", "Age": 35, "Fare": 53.1 }
+]

@@ -19,8 +19,6 @@ export default function TitanicOld() {
         <Box sx={{ flex: 1 }}>
           <MyCard title="The Titanic">
             <Typography paragraph>
-              This app shows you some basic aspects about logistic regression. We use passenger's sex, class, and age to estimate the effect on the survival of the Titanic accident.
-
               The RMS Titanic was a British passenger liner that sank in the North Atlantic Ocean in April 1912 after striking an iceberg during its maiden voyage from Southampton to New York City.
             </Typography>
             <Typography paragraph>

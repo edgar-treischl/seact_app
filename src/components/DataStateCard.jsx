@@ -18,7 +18,7 @@ export default function DataStateCard({
   empty = false,
   onRetry,
   children,
-  skeleton = false,
+  skeleton = true,
 }) {
   return (
     <Card
