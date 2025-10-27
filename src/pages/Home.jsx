@@ -19,13 +19,16 @@ export default function TitanicOld() {
         <Box sx={{ flex: 1 }}>
           <MyCard title="The Titanic">
             <Typography paragraph>
-              The RMS Titanic was a British passenger liner that sank in the North Atlantic Ocean in April 1912 after striking an iceberg during its maiden voyage from Southampton to New York City.
-              
-              Over 1,500 people lost their lives in the disaster, making it one of the deadliest commercial peacetime maritime tragedies in modern history.
+              The RMS Titanic was a British passenger liner that sank in the North 
+              Atlantic Ocean in April 1912 after striking an iceberg during 
+              its maiden voyage from Southampton to New York City.              
+            </Typography>
+            <Typography paragraph>
+              Over 1,500 people lost their lives in the disaster, making it one of 
+              the deadliest commercial peacetime maritime tragedies in modern history.
             </Typography>
             <Typography paragraph>
               This app shows you some basic aspects about logistic regression. We use passenger's sex, class, and age to estimate the effect on the survival of the Titanic accident.
-
             </Typography>
             {/* Placeholder image */}
             <CardMedia
