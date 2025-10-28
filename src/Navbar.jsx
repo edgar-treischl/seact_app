@@ -8,6 +8,8 @@ import InputIcon from '@mui/icons-material/Input';
 import OutputIcon from '@mui/icons-material/TableChart';
 import IdeaIcon from '@mui/icons-material/Lightbulb';
 import FunctionIcon from '@mui/icons-material/Functions';
+import ORIcon from '@mui/icons-material/Scale';
+
 
 
 
@@ -17,6 +19,7 @@ const navItems = [
   { label: 'Stats', to: '/Stats', icon: <PieChartIcon /> },
   { label: 'Idea', to: '/idea', icon: <IdeaIcon /> },
   { label: 'Models', to: '/models', icon: <FunctionIcon /> },
+  { label: 'OR', to: '/OddsRatios', icon: <ORIcon /> },
   { label: 'Inputs', to: '/inputs', icon: <InputIcon /> },
   { label: 'Table', to: '/outputs', icon: <OutputIcon /> },
 

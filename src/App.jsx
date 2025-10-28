@@ -9,6 +9,8 @@ import Stats from './pages/Stats';
 import Idea from './pages/Idea';
 import Alluvial from './pages/Alluvial';
 import Models from './pages/Models';
+import OddsRatios from './pages/OddsRatios';
+
 
 
 
@@ -21,6 +23,7 @@ export default function App() {
       <main style={styles.main}>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/oddsratios" element={<OddsRatios />} />
           <Route path="/models" element={<Models />} />
           <Route path="/variables" element={<Alluvial />} />
           <Route path="/stats" element={<Stats />} /> {/* ✅ Add this */}

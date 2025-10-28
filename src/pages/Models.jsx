@@ -1,3 +1,4 @@
+// src/pages/Models.jsx
 import React, { useState, useEffect } from "react";
 import {
   Box,
@@ -7,6 +8,7 @@ import {
   ToggleButtonGroup,
   Paper,
 } from "@mui/material";
+import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined';
 import MyCard from "../components/MyCard";
 import modelData from "../assets/model_summaries.json";
 
@@ -33,43 +35,52 @@ export default function Models() {
           gap: 3,
         }}
       >
-        {/* --- LEFT CARD: Explanation --- */}
-        <Box sx={{ flex: 1 }}>
+        {/* --- LEFT CARD: Explanation (wider) --- */}
+        <Box sx={{ flex: 2 }}>
           <MyCard title="Understanding the Logistic Models">
             <Typography paragraph>
-              To illustrate how logistic regression works, we’ve fitted three
-              models predicting **Survival** on the Titanic dataset. Each model
-              adds more predictors to explain survival odds.
+              Let’s run a logistic regression. Choose which variables to include
+              to estimate their effect on survival.
             </Typography>
 
             <Typography paragraph>
-              <b>Model overview:</b>
+              For example, starting with <b>Sex</b> as a predictor gives an
+              estimate of about <code>-2.51</code> for males. Logistic regression
+              models the <i>logarithm of the odds</i> of survival. Positive
+              coefficients increase the odds; negative ones decrease them.
             </Typography>
+
+            <Typography paragraph>
+              Odds ratios (<code>exp(estimate)</code>) make interpretation easier
+              and predicted probabilities provide an intuitive understanding of survival
+              chances.
+            </Typography>
+
+            <Typography paragraph>
+              Three models are available:
+            </Typography>
+
             <ul>
-              <li>
-                <b>Model 1:</b> <code>Survived ~ Sex</code> — compares survival
-                odds for males vs. females.
-              </li>
-              <li>
-                <b>Model 2:</b>{" "}
-                <code>Survived ~ Sex + Pclass</code> — adds passenger class.
-              </li>
-              <li>
-                <b>Model 3:</b>{" "}
-                <code>Survived ~ Sex + Pclass + Age</code> — adds age for the
-                most complete model.
-              </li>
+              <li><b>Model 1:</b> <code>Survived ~ Sex</code></li>
+              <li><b>Model 2:</b> <code>Survived ~ Sex + Pclass</code></li>
+              <li><b>Model 3:</b> <code>Survived ~ Sex + Pclass + Age</code></li>
             </ul>
 
-            <Typography variant="body2" sx={{ mt: 2, color: "text.secondary" }}>
-              The <code>Intercept</code> term gives the log-odds for the
-              reference group (e.g., females in 1st class). Other coefficients
-              represent changes relative to that group.
+            <Typography variant="body2" sx={{ mt: 1, color: "text.secondary" }}>
+              <code>Intercept</code> gives log-odds for the reference group; other coefficients
+              show relative changes.
             </Typography>
+
+            <Box sx={{ display: "flex", alignItems: "flex-start", mt: 2, p: 2, backgroundColor: "#fffbe6", borderRadius: 1 }}>
+              <LightbulbOutlinedIcon color="warning" sx={{ mr: 1, mt: 0.3 }} />
+              <Typography variant="body2">
+                Tip: Convert estimates to <b>odds ratios</b> with <code>exp(estimate)</code> for easier interpretation.
+              </Typography>
+            </Box>
           </MyCard>
         </Box>
 
-        {/* --- RIGHT CARD: Selector + Output --- */}
+        {/* --- RIGHT CARD: Selector + Output (smaller) --- */}
         <Box sx={{ flex: 1 }}>
           <MyCard title="Model Summary">
             <ToggleButtonGroup
@@ -91,8 +102,9 @@ export default function Models() {
             <Paper
               variant="outlined"
               sx={{
-                p: 2,
+                p: 1.5,
                 fontFamily: "monospace",
+                fontSize: "0.75rem", // smaller font
                 backgroundColor: "#f8f9fa",
                 overflowX: "auto",
                 whiteSpace: "pre",
@@ -100,7 +112,7 @@ export default function Models() {
             >
               {summary.length > 0 ? (
                 <>
-                  <Typography sx={{ fontFamily: "monospace", mb: 1 }}>
+                  <Typography sx={{ fontFamily: "monospace", fontSize: "0.75rem", mb: 1 }}>
                     <b>Coefficients:</b>
                   </Typography>
                   <pre style={{ margin: 0 }}>
@@ -117,7 +129,7 @@ export default function Models() {
                   </pre>
                 </>
               ) : (
-                <Typography>No summary available.</Typography>
+                <Typography sx={{ fontSize: "0.75rem" }}>No summary available.</Typography>
               )}
             </Paper>
           </MyCard>
