@@ -8,9 +8,10 @@ import SexPlot from '../components/titanic/SexPlot';
 import ClassPlot from '../components/titanic/ClassPlot';
 import AgePlot from '../components/titanic/AgePlot';
 
+
 export default function Titanic() {
   const [tab, setTab] = useState(0);
-  const tabLabels = ['Survival', 'Sex', 'Class', 'Age'];
+  const tabLabels = ['Survival', 'Sex', 'Class', 'Age', 'Models'];
 
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
@@ -63,6 +64,7 @@ export default function Titanic() {
             {tab === 1 && <SexPlot />}
             {tab === 2 && <ClassPlot />}
             {tab === 3 && <AgePlot />}
+
           </MyCard>
         </Box>
       </Box>

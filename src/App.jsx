@@ -8,6 +8,8 @@ import Outputs from './pages/Outputs';
 import Stats from './pages/Stats';
 import Idea from './pages/Idea';
 import Alluvial from './pages/Alluvial';
+import Models from './pages/Models';
+
 
 
 
@@ -19,6 +21,7 @@ export default function App() {
       <main style={styles.main}>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/models" element={<Models />} />
           <Route path="/variables" element={<Alluvial />} />
           <Route path="/stats" element={<Stats />} /> {/* ✅ Add this */}
           <Route path="/idea" element={<Idea />} />

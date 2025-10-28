@@ -7,6 +7,8 @@ import PieChartIcon from '@mui/icons-material/PieChart';
 import InputIcon from '@mui/icons-material/Input';
 import OutputIcon from '@mui/icons-material/TableChart';
 import IdeaIcon from '@mui/icons-material/Lightbulb';
+import FunctionIcon from '@mui/icons-material/Functions';
+
 
 
 const navItems = [
@@ -14,6 +16,7 @@ const navItems = [
   { label: 'Variables', to: '/Variables', icon: <PieChartIcon /> },
   { label: 'Stats', to: '/Stats', icon: <PieChartIcon /> },
   { label: 'Idea', to: '/idea', icon: <IdeaIcon /> },
+  { label: 'Models', to: '/models', icon: <FunctionIcon /> },
   { label: 'Inputs', to: '/inputs', icon: <InputIcon /> },
   { label: 'Table', to: '/outputs', icon: <OutputIcon /> },
 

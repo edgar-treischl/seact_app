@@ -1,0 +1,85 @@
+{
+  "m1": [
+    {
+      "term": "(Intercept)",
+      "estimate": 1.0566,
+      "std.error": 0.129,
+      "statistic": 8.1915,
+      "p.value": 2.5804e-16
+    },
+    {
+      "term": "Sexmale",
+      "estimate": -2.5137,
+      "std.error": 0.1672,
+      "statistic": -15.0361,
+      "p.value": 4.2587e-51
+    }
+  ],
+  "m2": [
+    {
+      "term": "(Intercept)",
+      "estimate": 2.2971,
+      "std.error": 0.219,
+      "statistic": 10.4899,
+      "p.value": 9.6113e-26
+    },
+    {
+      "term": "Sexmale",
+      "estimate": -2.6419,
+      "std.error": 0.1841,
+      "statistic": -14.3506,
+      "p.value": 1.0566e-46
+    },
+    {
+      "term": "PclassSecond class",
+      "estimate": -0.838,
+      "std.error": 0.2447,
+      "statistic": -3.4238,
+      "p.value": 0.0006
+    },
+    {
+      "term": "PclassThird class",
+      "estimate": -1.9055,
+      "std.error": 0.2141,
+      "statistic": -8.8983,
+      "p.value": 5.6699e-19
+    }
+  ],
+  "m3": [
+    {
+      "term": "(Intercept)",
+      "estimate": 3.777,
+      "std.error": 0.4011,
+      "statistic": 9.4161,
+      "p.value": 4.682e-21
+    },
+    {
+      "term": "Sexmale",
+      "estimate": -2.5228,
+      "std.error": 0.2074,
+      "statistic": -12.1644,
+      "p.value": 4.8112e-34
+    },
+    {
+      "term": "PclassSecond class",
+      "estimate": -1.3098,
+      "std.error": 0.2781,
+      "statistic": -4.7104,
+      "p.value": 2.4723e-06
+    },
+    {
+      "term": "PclassThird class",
+      "estimate": -2.5806,
+      "std.error": 0.2814,
+      "statistic": -9.1693,
+      "p.value": 4.7612e-20
+    },
+    {
+      "term": "Age",
+      "estimate": -0.037,
+      "std.error": 0.0077,
+      "statistic": -4.8309,
+      "p.value": 1.359e-06
+    }
+  ]
+}
