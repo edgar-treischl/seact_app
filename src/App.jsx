@@ -5,15 +5,10 @@ import Navbar from './Navbar';
 import Home from './pages/Home';
 import Inputs from './pages/Inputs';
 import Outputs from './pages/Outputs';
-import Stats from './pages/Stats';
 import Idea from './pages/Idea';
 import Alluvial from './pages/Alluvial';
 import Models from './pages/Models';
 import OddsRatios from './pages/OddsRatios';
-
-
-
-
 
 
 export default function App() {
@@ -26,7 +21,6 @@ export default function App() {
           <Route path="/oddsratios" element={<OddsRatios />} />
           <Route path="/models" element={<Models />} />
           <Route path="/variables" element={<Alluvial />} />
-          <Route path="/stats" element={<Stats />} /> {/* ✅ Add this */}
           <Route path="/idea" element={<Idea />} />
           <Route path="/inputs" element={<Inputs />} />
           <Route path="/outputs" element={<Outputs />} />
