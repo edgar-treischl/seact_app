@@ -18,13 +18,13 @@ export default function LogitVsLinear() {
       }}
     >
       <Typography variant="h6">
-        {useLogit ? "Logistic Regression" : "Linear Regression"}
+        {useLogit ? "Linear Regression": "Logistic Regression"}
       </Typography>
 
       <Box
         component="img"
-        src={useLogit ? logitImg : linearImg}
-        alt={useLogit ? "Logistic regression plot" : "Linear regression plot"}
+        src={useLogit ? linearImg: logitImg}
+        alt={useLogit ? "Linear regression" : "Logistic regression"}
         sx={{
           width: "100%",
           maxWidth: 500,
@@ -39,7 +39,7 @@ export default function LogitVsLinear() {
         size="small"
         onClick={() => setUseLogit(!useLogit)}
       >
-        Switch to {useLogit ? "Linear" : "Logistic"}
+        Switch to {useLogit ? "Logistic" : "Linear"}
       </Button>
 
       <Typography variant="body2" color="text.secondary">

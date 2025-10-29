@@ -49,7 +49,7 @@ export default function TitanicOld() {
 
         {/* Right Panel */}
         <Box sx={{ flex: 1 }}>
-          <MyCard title="Survival">
+          <MyCard>
             <LogitVsLinear />
           </MyCard>
         </Box>

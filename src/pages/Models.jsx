@@ -65,18 +65,10 @@ export default function Models() {
               <li><b>Model 2:</b> <code>Survived ~ Sex + Pclass</code></li>
               <li><b>Model 3:</b> <code>Survived ~ Sex + Pclass + Age</code></li>
             </ul>
-
             <Typography variant="body2" sx={{ mt: 1, color: "text.secondary" }}>
               <code>Intercept</code> gives log-odds for the reference group; other coefficients
               show relative changes.
             </Typography>
-
-            <Box sx={{ display: "flex", alignItems: "flex-start", mt: 2, p: 2, backgroundColor: "#fffbe6", borderRadius: 1 }}>
-              <LightbulbOutlinedIcon color="warning" sx={{ mr: 1, mt: 0.3 }} />
-              <Typography variant="body2">
-                Tip: Convert estimates to <b>odds ratios</b> with <code>exp(estimate)</code> for easier interpretation.
-              </Typography>
-            </Box>
           </MyCard>
         </Box>
 
@@ -132,6 +124,12 @@ export default function Models() {
                 <Typography sx={{ fontSize: "0.75rem" }}>No summary available.</Typography>
               )}
             </Paper>
+            <Box sx={{ display: "flex", alignItems: "flex-start", mt: 2, p: 2, backgroundColor: "#fffbe6", borderRadius: 1 }}>
+              <LightbulbOutlinedIcon color="warning" sx={{ mr: 1, mt: 0.3 }} />
+              <Typography variant="body2">
+                Tip: Convert estimates to <b>odds ratios</b> with <code>exp(estimate)</code> with R for easier interpretation.
+              </Typography>
+            </Box>
           </MyCard>
         </Box>
       </Box>

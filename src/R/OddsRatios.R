@@ -54,3 +54,18 @@ ggsave("src/assets/or_m2.png", width = 6, height = 4, dpi = 200)
 or_plot("m3")
 ggsave("src/assets/or_m3.png", width = 6, height = 4, dpi = 200)
 
+
+
+
+
+ggplot(train_df, aes(x = Sex, fill = Survived)) +
+  geom_bar() +
+  geom_text(stat = "count", aes(label = after_stat(count)), vjust = -1, position = position_stack(vjust = 0), size = 6) +
+  ylab("Count") +
+  scale_fill_manual(values = c("#009E73", "#E69F00")) +
+  theme_bw(base_size = 18) +
+  theme(legend.position = "bottom")
+
+
+ggsave("src/assets/or_count.png", width = 6, height = 4, dpi = 200)
+
