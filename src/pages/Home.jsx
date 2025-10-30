@@ -1,80 +1,73 @@
-// src/pages/Stats.jsx
 import React, { useState } from 'react';
-import { Box, Container, Tabs, Tab, Typography, CardMedia } from '@mui/material';
-import MyCard from '../components/MyCard';
+import { Typography, Tabs, Tab, CardMedia, Box } from '@mui/material';
+import PageWrapper from '../components/PageWrapper';
+import CardPanel from '../components/CardPanel';
 
 import SurvivalPlot from '../components/titanic/SurvivalPlot';
 import SexPlot from '../components/titanic/SexPlot';
 import ClassPlot from '../components/titanic/ClassPlot';
 import AgePlot from '../components/titanic/AgePlot';
 
-
 export default function Titanic() {
   const [tab, setTab] = useState(0);
   const tabLabels = ['Survival', 'Sex', 'Class', 'Age'];
 
   return (
-    <Container maxWidth="lg" sx={{ py: 4 }}>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: { xs: 'column', md: 'row' },
-          gap: 3,
-        }}
-      >
-        {/* Left Panel */}
-        <Box sx={{ flex: 1 }}>
-          <MyCard title="The Titanic">
-                    <Typography paragraph>
-                      The RMS Titanic was a British passenger liner that sank in the North 
-                      Atlantic Ocean in April 1912 after striking an iceberg during 
-                      its maiden voyage from Southampton to New York City.              
-                    </Typography>
-                    <Typography paragraph>
-                      Over 1,500 people lost their lives in the disaster, making it one of 
-                      the deadliest commercial peacetime maritime tragedies in modern history.
-                    </Typography>
-                    <Typography paragraph>
-                      This app shows you some basic aspects about logistic regression. We use passenger's sex, class, and age to estimate the effect on the survival of the Titanic accident.
-                    </Typography>
-                    {/* Placeholder image */}
-                    <CardMedia
-                      component="img"
-                      image="https://upload.wikimedia.org/wikipedia/commons/f/fd/RMS_Titanic_3.jpg"
-                      alt="RMS Titanic"
-                      sx={{ borderRadius: 1, mt: 2, maxHeight: 200, objectFit: 'cover', width: '100%' }}
-                    />
-                    <Typography variant="caption" display="block" sx={{ mt: 1, color: 'text.secondary' }}>
-                      Image: RMS Titanic, Wikimedia Commons
-                    </Typography>
-                  </MyCard>
-                </Box>
+    <PageWrapper gap={3} paddingY={2}>
+      {/* Left Panel */}
+      <CardPanel flex={1}>
+        <Typography variant="h5" gutterBottom>
+          The Titanic
+        </Typography>
 
-        {/* Right panel: tabs + plots */}
-        <Box sx={{ flex: 1 }}>
-          <MyCard>
-            {/* Tabs inside the card */}
-            <Tabs
-              value={tab}
-              onChange={(e, newValue) => setTab(newValue)}
-              variant="scrollable"
-              scrollButtons="auto"
-              sx={{ mb: 3 }}
-            >
-              {tabLabels.map((label, index) => (
-                <Tab key={index} label={label} />
-              ))}
-            </Tabs>
+        <Typography paragraph sx={{ lineHeight: 1.6 }}>
+          The RMS Titanic was a British passenger liner that sank in the North Atlantic Ocean in April 1912 after striking an iceberg during its maiden voyage from Southampton to New York City.
+        </Typography>
 
-            {/* Render selected plot */}
-            {tab === 0 && <SurvivalPlot />}
-            {tab === 1 && <SexPlot />}
-            {tab === 2 && <ClassPlot />}
-            {tab === 3 && <AgePlot />}
+        <Typography paragraph sx={{ lineHeight: 1.6 }}>
+          Over <strong>1,500 people</strong> lost their lives in the disaster, making it one of the deadliest commercial peacetime maritime tragedies in modern history.
+        </Typography>
 
-          </MyCard>
+        <Typography paragraph sx={{ lineHeight: 1.6 }}>
+          This app shows you some basic aspects about logistic regression. We use passenger's sex, class, and age to estimate the effect on the survival of the Titanic accident.
+        </Typography>
+
+        <CardMedia
+          component="img"
+          image="https://upload.wikimedia.org/wikipedia/commons/f/fd/RMS_Titanic_3.jpg"
+          alt="RMS Titanic"
+          sx={{ borderRadius: 2, mt: 2, width: '100%', maxHeight: 200, objectFit: 'cover' }}
+        />
+
+        <Typography variant="caption" display="block" sx={{ mt: 1, color: 'text.secondary' }}>
+          Image: RMS Titanic, Wikimedia Commons
+        </Typography>
+      </CardPanel>
+
+      {/* Right Panel */}
+      <CardPanel flex={1}>
+        {/* Tabs */}
+        <Tabs
+          value={tab}
+          onChange={(e, newValue) => setTab(newValue)}
+          variant="fullWidth"
+          textColor="primary"
+          indicatorColor="primary"
+          sx={{ mb: 2 }}
+        >
+          {tabLabels.map((label, i) => (
+            <Tab key={i} label={label} sx={{ textTransform: 'none', fontWeight: 'medium' }} />
+          ))}
+        </Tabs>
+
+        {/* Plots */}
+        <Box sx={{ mt: 2 }}>
+          {tab === 0 && <SurvivalPlot />}
+          {tab === 1 && <SexPlot />}
+          {tab === 2 && <ClassPlot />}
+          {tab === 3 && <AgePlot />}
         </Box>
-      </Box>
-    </Container>
+      </CardPanel>
+    </PageWrapper>
   );
 }

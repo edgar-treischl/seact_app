@@ -1,7 +1,10 @@
 // src/App.jsx
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { Box } from '@mui/material';
 import Navbar from './Navbar';
+import Footer from './components/Footer';
+
 import Home from './pages/Home';
 import Inputs from './pages/Inputs';
 import Outputs from './pages/Outputs';
@@ -10,12 +13,20 @@ import Alluvial from './pages/Alluvial';
 import Models from './pages/Models';
 import OddsRatios from './pages/OddsRatios';
 
-
 export default function App() {
   return (
-    <>
+    <Box display="flex" flexDirection="column" minHeight="100vh">
       <Navbar />
-      <main style={styles.main}>
+      
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          padding: { xs: '1rem', md: '1rem 2rem' },
+          backgroundColor: '#f0f2f5',
+          boxSizing: 'border-box',
+        }}
+      >
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/oddsratios" element={<OddsRatios />} />
@@ -25,16 +36,9 @@ export default function App() {
           <Route path="/inputs" element={<Inputs />} />
           <Route path="/outputs" element={<Outputs />} />
         </Routes>
-      </main>
-    </>
+      </Box>
+
+      <Footer />
+    </Box>
   );
 }
-
-const styles = {
-  main: {
-    padding: '1rem 2rem',
-    backgroundColor: '#f0f2f5',
-    minHeight: 'calc(100vh - 64px)',
-    boxSizing: 'border-box',
-  },
-};
