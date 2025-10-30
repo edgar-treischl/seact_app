@@ -8,9 +8,15 @@ import OutputIcon from '@mui/icons-material/TableChart';
 import IdeaIcon from '@mui/icons-material/Lightbulb';
 import FunctionIcon from '@mui/icons-material/Functions';
 import OrIcon from '@mui/icons-material/Scale';
+import RocIcon from '@mui/icons-material/PrecisionManufacturing';
+import PredictionIcon from '@mui/icons-material/RocketLaunch';
+
+
 
 const navItems = [
   { label: 'Variables', to: '/Variables', icon: <PieChartIcon fontSize="small" /> },
+  { label: 'Roc', to: '/Roc', icon: <RocIcon fontSize="small" /> },
+  { label: 'Prediction', to: '/prediction', icon: <PredictionIcon fontSize="small" /> },
   { label: 'Idea', to: '/idea', icon: <IdeaIcon fontSize="small" /> },
   { label: 'Models', to: '/models', icon: <FunctionIcon fontSize="small" /> },
   { label: 'OR', to: '/OddsRatios', icon: <OrIcon fontSize="small" /> },
@@ -41,7 +47,7 @@ export default function Navbar() {
             '&:hover': { color: '#1976d2' },
           }}
         >
-          <HomeIcon fontSize="small" />
+          <HomeIcon fontSize="medium" />
           <Typography variant="h6" sx={{ fontWeight: 'medium' }}>
             Titanic App
           </Typography>

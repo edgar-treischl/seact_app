@@ -12,6 +12,8 @@ import Idea from './pages/Idea';
 import Alluvial from './pages/Alluvial';
 import Models from './pages/Models';
 import OddsRatios from './pages/OddsRatios';
+import TitanicPrediction from './pages/TitanicPrediction';
+import Roc from './pages/Roc';
 
 export default function App() {
   return (
@@ -29,6 +31,8 @@ export default function App() {
       >
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/roc" element={<Roc />} />
+          <Route path="/prediction" element={<TitanicPrediction />} />
           <Route path="/oddsratios" element={<OddsRatios />} />
           <Route path="/models" element={<Models />} />
           <Route path="/variables" element={<Alluvial />} />
