@@ -3,8 +3,8 @@ import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Box } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import PieChartIcon from '@mui/icons-material/PieChart';
-import InputIcon from '@mui/icons-material/Input';
-import OutputIcon from '@mui/icons-material/TableChart';
+// import InputIcon from '@mui/icons-material/Input';
+// import OutputIcon from '@mui/icons-material/TableChart';
 import IdeaIcon from '@mui/icons-material/Lightbulb';
 import FunctionIcon from '@mui/icons-material/Functions';
 import OrIcon from '@mui/icons-material/Scale';
@@ -15,13 +15,11 @@ import PredictionIcon from '@mui/icons-material/RocketLaunch';
 
 const navItems = [
   { label: 'Variables', to: '/Variables', icon: <PieChartIcon fontSize="small" /> },
-  { label: 'Roc', to: '/Roc', icon: <RocIcon fontSize="small" /> },
-  { label: 'Prediction', to: '/prediction', icon: <PredictionIcon fontSize="small" /> },
   { label: 'Idea', to: '/idea', icon: <IdeaIcon fontSize="small" /> },
   { label: 'Models', to: '/models', icon: <FunctionIcon fontSize="small" /> },
   { label: 'OR', to: '/OddsRatios', icon: <OrIcon fontSize="small" /> },
-  { label: 'Inputs', to: '/inputs', icon: <InputIcon fontSize="small" /> },
-  { label: 'Table', to: '/outputs', icon: <OutputIcon fontSize="small" /> },
+  { label: 'Roc', to: '/Roc', icon: <RocIcon fontSize="small" /> },
+  { label: 'Prediction', to: '/prediction', icon: <PredictionIcon fontSize="small" /> },
 ];
 
 export default function Navbar() {

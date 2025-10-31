@@ -6,10 +6,8 @@ import Navbar from './Navbar';
 import Footer from './components/Footer';
 
 import Home from './pages/Home';
-import Inputs from './pages/Inputs';
-import Outputs from './pages/Outputs';
-import Idea from './pages/Idea';
 import Alluvial from './pages/Alluvial';
+import Idea from './pages/Idea';
 import Models from './pages/Models';
 import OddsRatios from './pages/OddsRatios';
 import TitanicPrediction from './pages/TitanicPrediction';
@@ -31,14 +29,12 @@ export default function App() {
       >
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/roc" element={<Roc />} />
-          <Route path="/prediction" element={<TitanicPrediction />} />
-          <Route path="/oddsratios" element={<OddsRatios />} />
-          <Route path="/models" element={<Models />} />
           <Route path="/variables" element={<Alluvial />} />
           <Route path="/idea" element={<Idea />} />
-          <Route path="/inputs" element={<Inputs />} />
-          <Route path="/outputs" element={<Outputs />} />
+          <Route path="/oddsratios" element={<OddsRatios />} />
+          <Route path="/models" element={<Models />} />
+          <Route path="/roc" element={<Roc />} />
+          <Route path="/prediction" element={<TitanicPrediction />} />
         </Routes>
       </Box>
 

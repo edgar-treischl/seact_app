@@ -17,7 +17,8 @@ export default function Footer() {
       }}
     >
       <Typography variant="body2" color="text.secondary" sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 1 }}>
-        Built with <ReactIcon fontSize="small" /> React by Edgar.
+        Built with <ReactIcon fontSize="small" /> by Edgar J. Treischl
+        © {new Date().getFullYear()}
         <IconButton
           component={Link}
           href="https://github.com/your-github-username"
@@ -28,7 +29,6 @@ export default function Footer() {
         >
           <GitHubIcon fontSize="small" />
         </IconButton>
-        © {new Date().getFullYear()}
       </Typography>
     </Box>
   );
