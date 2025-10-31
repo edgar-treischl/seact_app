@@ -69,3 +69,27 @@ ggplot(train_df, aes(x = Sex, fill = Survived)) +
 
 ggsave("src/assets/or_count.png", width = 6, height = 4, dpi = 200)
 
+
+
+
+# New approach; export OR for interactive plots
+
+tidy(model_call("m1")) %>%
+    mutate(oddsRatio = exp(estimate)) %>%
+    select(term, oddsRatio) %>%
+    mutate(term = replace(term, term == "(Intercept)", NA)) %>%
+    drop_na() 
+
+
+tidy(model_call("m2")) %>%
+    mutate(oddsRatio = exp(estimate)) %>%
+    select(term, oddsRatio) %>%
+    mutate(term = replace(term, term == "(Intercept)", NA)) %>%
+    drop_na() 
+
+
+tidy(model_call("m3")) %>%
+    mutate(oddsRatio = exp(estimate)) %>%
+    select(term, oddsRatio) %>%
+    mutate(term = replace(term, term == "(Intercept)", NA)) %>%
+    drop_na() 
