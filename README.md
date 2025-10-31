@@ -1,26 +1,41 @@
-# React + Vite + GHA = FUN
+# Logistic Regression App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This Shiny app allows you to explore the Titanic passenger data and
+analyze survival outcomes through visualizations and logistic regression
+models. By using the app, you will deepen your understanding of how
+different factors like sex, age, and passenger class influenced survival
+chances on the Titanic.
 
-Currently, two official plugins are available:
+### 1. Exploring Data Patterns
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Visualize survival rates by **sex**, **age**, and **class**.  
+- Understand distributions and relationships through **alluvial plots**,
+  which show how groups flow across categories such as sex, age group,
+  and class.
 
-## React Compiler
+### 2. Understanding Logistic Regression Models
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- See how different models with various predictors (sex, age, class)
+  affect the model.  
+- Interpret **Odds Ratio** plots to understand how each factor increases
+  or decreases the chance of survival.
 
-## Expanding the ESLint configuration
+### 3. Making Predictions
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Input your own hypothetical passenger characteristics (sex, age,
+  class) and see the predicted probability of survival.
 
-## Local Development
+### 4. Evaluating Model Performance
 
-To start the development server locally:
+- Explore model accuracy with **confusion matrices** that show how many
+  passengers were (in-) correctly predicted to survive.  
+- Understand **ROC curves**, which measure the model’s ability to
+  discriminate between survivors and non-survivors.
 
-```bash
-yarn install
-yarn dev
+Ready to dive in? You can inspect the app on my
+[website](http://edgar-treischl.de/projects) or run the app via:
+
+``` r
+library(shiny)
+runGitHub("LogisticApp", "edgar-treischl", ref="main")
 ```
-

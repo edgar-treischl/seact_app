@@ -10,6 +10,7 @@ import {
   Tooltip,
   LabelList,
   ResponsiveContainer,
+  Cell,
 } from "recharts";
 import titanicData from "../../data/titanic.json";
 
@@ -31,6 +32,12 @@ export default function SurvivalPlot() {
     percent: (counts[key] / total) * 100,
   }));
 
+  // Define colors for each category
+  const colors = {
+    Survived: "#E69F00",       // green
+    "Not survived": "#009E73", // red
+  };
+
   return (
     <Box sx={{ width: "100%", height: 400 }}>
       <ResponsiveContainer>
@@ -39,7 +46,10 @@ export default function SurvivalPlot() {
           <XAxis dataKey="status" />
           <YAxis label={{ value: "Percent (%)", angle: -90, position: "insideLeft" }} />
           <Tooltip formatter={(value) => value.toFixed(1) + "%"} />
-          <Bar dataKey="percent" fill="#999999">
+          <Bar dataKey="percent">
+            {data.map((entry) => (
+              <Cell key={entry.status} fill={colors[entry.status]} />
+            ))}
             <LabelList
               dataKey="percent"
               position="top"
@@ -51,3 +61,4 @@ export default function SurvivalPlot() {
     </Box>
   );
 }
+

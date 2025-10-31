@@ -1,38 +1,94 @@
-import React from 'react';
-import Plot from 'react-plotly.js';
-import titanicData from '../../data/titanic.json';
+// src/components/titanic/SexPlot.jsx
+
+import React from "react";
+import { Box } from "@mui/material";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  LabelList,
+  ResponsiveContainer,
+  Cell,
+} from "recharts";
+import titanicData from "../../data/titanic.json";
 
 export default function SexPlot() {
-  const maleSurvived = titanicData.filter(d => d.Sex === 'male' && d.Survived === 'Survived').length;
-  const maleNotSurvived = titanicData.filter(d => d.Sex === 'male' && d.Survived === 'Not survived').length;
-  const femaleSurvived = titanicData.filter(d => d.Sex === 'female' && d.Survived === 'Survived').length;
-  const femaleNotSurvived = titanicData.filter(d => d.Sex === 'female' && d.Survived === 'Not survived').length;
+  // Count survivors by sex
+  const maleSurvived = titanicData.filter(
+    (d) => d.Sex === "male" && d.Survived === "Survived"
+  ).length;
+  const maleNotSurvived = titanicData.filter(
+    (d) => d.Sex === "male" && d.Survived === "Not survived"
+  ).length;
+  const femaleSurvived = titanicData.filter(
+    (d) => d.Sex === "female" && d.Survived === "Survived"
+  ).length;
+  const femaleNotSurvived = titanicData.filter(
+    (d) => d.Sex === "female" && d.Survived === "Not survived"
+  ).length;
 
-  const sexes = ['male', 'female'];
-
-  const survivedPercent = sexes.map((s, i) => {
-    const total = (s === 'male' ? maleSurvived + maleNotSurvived : femaleSurvived + femaleNotSurvived);
-    return s === 'male' ? (maleSurvived / total) * 100 : (femaleSurvived / total) * 100;
-  });
-
-  const notSurvivedPercent = sexes.map((s, i) => {
-    const total = (s === 'male' ? maleSurvived + maleNotSurvived : femaleSurvived + femaleNotSurvived);
-    return s === 'male' ? (maleNotSurvived / total) * 100 : (femaleNotSurvived / total) * 100;
-  });
+  // Prepare data in stacked bar format
+  const data = [
+    {
+      sex: "male",
+      Survived:
+        (maleSurvived / (maleSurvived + maleNotSurvived)) * 100,
+      "Not survived":
+        (maleNotSurvived / (maleSurvived + maleNotSurvived)) * 100,
+    },
+    {
+      sex: "female",
+      Survived:
+        (femaleSurvived / (femaleSurvived + femaleNotSurvived)) * 100,
+      "Not survived":
+        (femaleNotSurvived / (femaleSurvived + femaleNotSurvived)) * 100,
+    },
+  ];
+  
+  const colors = {
+    Survived: "#E69F00",       // green
+    "Not survived": "#009E73", // red
+  };
 
   return (
-    <Plot
-      data={[
-        { x: sexes, y: notSurvivedPercent, type: 'bar', name: 'Not survived', marker: { color: '#009E73' } },
-        { x: sexes, y: survivedPercent, type: 'bar', name: 'Survived', marker: { color: '#E69F00' } },
-      ]}
-      layout={{
-        barmode: 'stack',
-        title: 'Survival by Sex',
-        yaxis: { title: 'Percent', range: [0, 100] },
-        legend: { orientation: 'h', y: -0.2 },
-      }}
-      style={{ width: '100%', height: '500px' }}
-    />
+    <Box sx={{ width: "100%", height: 400 }}>
+      <ResponsiveContainer>
+        <BarChart
+          data={data}
+          margin={{ top: 20, right: 20, left: 20, bottom: 40 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="sex" />
+          <YAxis
+            label={{
+              value: "Percent (%)",
+              angle: -90,
+              position: "insideLeft",
+            }}
+            domain={[0, 100]}
+          />
+          <Tooltip formatter={(value) => value.toFixed(1) + "%"} />
+          <Bar dataKey="Not survived" stackId="a" fill={colors["Not survived"]}>
+            <LabelList
+              dataKey="Not survived"
+              position="center"
+              formatter={(value) => value.toFixed(1) + "%"}
+              fill="#fff"
+            />
+          </Bar>
+          <Bar dataKey="Survived" stackId="a" fill={colors.Survived}>
+            <LabelList
+              dataKey="Survived"
+              position="center"
+              formatter={(value) => value.toFixed(1) + "%"}
+              fill="#fff"
+            />
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
+    </Box>
   );
 }

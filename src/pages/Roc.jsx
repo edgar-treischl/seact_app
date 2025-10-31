@@ -1,6 +1,13 @@
-// src/pages/Roc.jsx
 import React, { useState, useEffect } from "react";
-import { Typography, ToggleButton, ToggleButtonGroup, Box } from "@mui/material";
+import {
+  Typography,
+  ToggleButton,
+  ToggleButtonGroup,
+  Box,
+  Dialog,
+  IconButton,
+} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 import PageWrapper from "../components/PageWrapper";
 import CardPanel from "../components/CardPanel";
 import rocPlot from "../assets/prediction.png";
@@ -9,6 +16,7 @@ import sensitivityPlot from "../assets/sensitivity.png";
 export default function Roc() {
   const [view, setView] = useState("sensitivity");
   const [imageSrc, setImageSrc] = useState(sensitivityPlot);
+  const [open, setOpen] = useState(false); // for Dialog
 
   useEffect(() => {
     switch (view) {
@@ -73,10 +81,12 @@ export default function Roc() {
             <ToggleButton value="roc">ROC Curve</ToggleButton>
           </ToggleButtonGroup>
 
+          {/* Clickable Image */}
           <Box
             component="img"
             src={imageSrc}
             alt={`${viewTitles[view]} Plot`}
+            onClick={() => setOpen(true)}
             sx={{
               width: "100%",
               height: "auto",
@@ -84,10 +94,44 @@ export default function Roc() {
               borderRadius: 1,
               objectFit: "contain",
               backgroundColor: "#fafafa",
+              cursor: "pointer",
+              transition: "transform 0.2s ease",
+              "&:hover": { transform: "scale(1.02)" },
             }}
           />
         </CardPanel>
       </Box>
+
+      {/* Dialog for enlarged view */}
+      <Dialog open={open} onClose={() => setOpen(false)} maxWidth="lg" fullWidth>
+        <Box sx={{ position: "relative" }}>
+          <IconButton
+            aria-label="close"
+            onClick={() => setOpen(false)}
+            sx={{
+              position: "absolute",
+              top: 8,
+              right: 8,
+              color: "grey.700",
+              zIndex: 1,
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
+          <Box
+            component="img"
+            src={imageSrc}
+            alt={`${viewTitles[view]} Plot Enlarged`}
+            sx={{
+              width: "100%",
+              height: "auto",
+              maxHeight: "90vh",
+              objectFit: "contain",
+              backgroundColor: "#000",
+            }}
+          />
+        </Box>
+      </Dialog>
     </PageWrapper>
   );
 }
