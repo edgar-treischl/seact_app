@@ -10,8 +10,8 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import PageWrapper from "../components/PageWrapper";
 import CardPanel from "../components/CardPanel";
-import rocPlot from "../assets/prediction.png";
-import sensitivityPlot from "../assets/sensitivity.png";
+import sensitivityPlot from "../assets/prediction.png";
+import rocPlot from "../assets/sensitivity.png";
 
 export default function Roc() {
   const [view, setView] = useState("sensitivity");
@@ -127,7 +127,7 @@ export default function Roc() {
               height: "auto",
               maxHeight: "90vh",
               objectFit: "contain",
-              backgroundColor: "#000",
+              backgroundColor: "#fff",
             }}
           />
         </Box>
