@@ -2,36 +2,54 @@ import React from "react";
 import Plot from "react-plotly.js";
 
 export default function Mosaic({ data }) {
-  // Add a root node
-  const rootLabel = "All passengers";
+  // Extract unique x and y categories
+  const xCategories = [...new Set(data.map(d => d.x))];
+  const yCategories = [...new Set(data.map(d => d.y))];
 
-  const labels = [rootLabel, ...data.map(d => d.True + " / " + d.Predicted)];
-  const parents = ["", ...data.map(d => rootLabel)]; // all tiles have root as parent
-  const values = [0, ...data.map(d => d.num)]; // root value is 0, ignored
-  const colors = ["#fff", ...data.map(d => (d.Predicted === "Survived" ? "#009E73" : "#E69F00"))];
+  // Create z matrix
+  const z = yCategories.map(y =>
+    xCategories.map(x => {
+      const item = data.find(d => d.x === x && d.y === y);
+      return item ? item.value : 0;
+    })
+  );
+
+  // Create text labels for hover + annotations
+  const text = yCategories.map(y =>
+    xCategories.map(x => {
+      const item = data.find(d => d.x === x && d.y === y);
+      return item ? `${item.value}` : "";
+    })
+  );
 
   return (
     <Plot
       data={[
         {
-          type: "treemap",
-          labels,
-          parents,
-          values,
-          textinfo: "label+value",
-          texttemplate: "%{label}<br>%{value}",
-          marker: { colors, line: { width: 2, color: "#fff" } },
-          tiling: { pad: 15 },
-          hoverinfo: "label+value+percent parent",
+          x: xCategories,
+          y: yCategories,
+          z,
+          type: "heatmap",
+          colorscale: [["0", "#FFFFFF"], ["1", "#E69F00"]],
+          showscale: false,
+          text,
+          hoverinfo: "x+y+text",
         },
       ]}
       layout={{
-        margin: { t: 0, l: 0, r: 0, b: 0 },
+        margin: { t: 20, b: 50, l: 80, r: 20 },
+        xaxis: { title: "Observed" },
+        yaxis: { title: "Predicted" },
+        annotations: data.map(d => ({
+          x: d.x,
+          y: d.y,
+          text: d.value,
+          showarrow: false,
+          font: { color: "#2C3E50", size: 16, family: "Arial" }
+        })),
         height: 400,
-        uniformtext: { minsize: 14, mode: "hide" },
       }}
-      config={{ responsive: true }}
-      style={{ width: "100%" }}
+      config={{ displayModeBar: false }}
     />
   );
 }
