@@ -1,7 +1,17 @@
 // src/components/titanic/SurvivalPlot.jsx
-import React from 'react';
-import Plot from 'react-plotly.js';
-import titanicData from '../../data/titanic.json';
+import React from "react";
+import { Box } from "@mui/material";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  LabelList,
+  ResponsiveContainer,
+} from "recharts";
+import titanicData from "../../data/titanic.json";
 
 export default function SurvivalPlot() {
   // Count survived vs not survived
@@ -11,30 +21,33 @@ export default function SurvivalPlot() {
       acc[key] = (acc[key] || 0) + 1;
       return acc;
     },
-    { Survived: 0, 'Not survived': 0 } // ensure both keys exist
+    { Survived: 0, "Not survived": 0 } // ensure both keys exist
   );
 
-  const labels = Object.keys(counts);
-  const values = Object.values(counts);
+  // Convert counts to percentage
+  const total = titanicData.length;
+  const data = Object.keys(counts).map((key) => ({
+    status: key,
+    percent: (counts[key] / total) * 100,
+  }));
 
   return (
-    <Plot
-      data={[
-        {
-          type: 'bar',
-          x: labels,
-          y: values.map(v => (v / titanicData.length) * 100),
-          marker: { color: '#999999' },
-        },
-      ]}
-      layout={{
-        title: 'Survival of the Titanic',
-        xaxis: { title: 'Survival' },
-        yaxis: { title: 'Percent' },
-        margin: { t: 40, l: 50, r: 30, b: 40 },
-      }}
-      config={{ responsive: true }}
-      style={{ width: '100%', height: '500px' }}
-    />
+    <Box sx={{ width: "100%", height: 400 }}>
+      <ResponsiveContainer>
+        <BarChart data={data} margin={{ top: 20, right: 20, left: 20, bottom: 40 }}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="status" />
+          <YAxis label={{ value: "Percent (%)", angle: -90, position: "insideLeft" }} />
+          <Tooltip formatter={(value) => value.toFixed(1) + "%"} />
+          <Bar dataKey="percent" fill="#999999">
+            <LabelList
+              dataKey="percent"
+              position="top"
+              formatter={(value) => value.toFixed(1) + "%"}
+            />
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
+    </Box>
   );
 }

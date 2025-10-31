@@ -1,7 +1,7 @@
-import React from 'react';
-import { Box, Typography, Link, IconButton } from '@mui/material';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import ReactIcon from '@mui/icons-material/AutoAwesome'; // Or your preferred React logo
+import React from "react";
+import { Box, Typography, Link, IconButton } from "@mui/material";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import ReactIcon from "@mui/icons-material/AutoAwesome"; // Replace with preferred React logo
 
 export default function Footer() {
   return (
@@ -10,14 +10,32 @@ export default function Footer() {
       sx={{
         py: 2,
         px: 3,
-        mt: 'auto',
-        borderTop: '1px solid #ddd',
-        textAlign: 'center',
-        backgroundColor: '#f9f9f9',
+        mt: "auto",
+        borderTop: "1px solid #ddd",
+        textAlign: "center",
+        backgroundColor: "#f9f9f9",
       }}
     >
-      <Typography variant="body2" color="text.secondary" sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 1 }}>
-        Built with <ReactIcon fontSize="small" /> by Edgar J. Treischl
+      <Typography
+        variant="body2"
+        color="text.secondary"
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 1,
+          flexWrap: "wrap",
+        }}
+      >
+        Built with <ReactIcon fontSize="small" /> by{" "}
+        <Link
+          href="https://edgar-treischl.de"
+          target="_blank"
+          rel="noopener"
+          underline="hover"
+        >
+          Edgar J. Treischl
+        </Link>{" "}
         © {new Date().getFullYear()}
         <IconButton
           component={Link}

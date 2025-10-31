@@ -14,12 +14,13 @@ import PredictionIcon from '@mui/icons-material/RocketLaunch';
 
 
 const navItems = [
-  { label: 'Variables', to: '/Variables', icon: <PieChartIcon fontSize="small" /> },
   { label: 'Idea', to: '/idea', icon: <IdeaIcon fontSize="small" /> },
+  { label: 'Variables', to: '/Variables', icon: <PieChartIcon fontSize="small" /> },
   { label: 'Models', to: '/models', icon: <FunctionIcon fontSize="small" /> },
-  { label: 'OR', to: '/OddsRatios', icon: <OrIcon fontSize="small" /> },
-  { label: 'Roc', to: '/Roc', icon: <RocIcon fontSize="small" /> },
+  { label: 'Odds Ratio', to: '/OddsRatios', icon: <OrIcon fontSize="small" /> },
   { label: 'Prediction', to: '/prediction', icon: <PredictionIcon fontSize="small" /> },
+  { label: 'Performance', to: '/Roc', icon: <RocIcon fontSize="small" /> },
+
 ];
 
 export default function Navbar() {

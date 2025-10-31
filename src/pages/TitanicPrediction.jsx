@@ -97,6 +97,11 @@ export default function TitanicPrediction() {
               label="Age"
               value={age}
               onChange={e => setAge(Number(e.target.value))}
+              onBlur={() => {
+                if (age < 1) setAge(1);
+                if (age > 99) setAge(99);
+              }}
+              inputProps={{ min: 1, max: 99 }}
             />
 
             <TextField
